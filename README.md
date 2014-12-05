@@ -1,5 +1,5 @@
-tech-progress-data
-==================
+Data on the progress of technology
+==================================
 
 Description
 -----------
@@ -9,11 +9,10 @@ Usage
 -----
 Create a plot illustrating the evolution of transistor counts in microprocessors (i.e. Moore's law):
 
-    ```Python
-    import plot_progress
-    mydata = plot_progress.TransistorCountData()
-    mydata.get_plot().show()
-    ```
+```Python
+import plot_progress
+plot_progress.TransistorCountData().get_plot().show()
+```
 
 License
 -------
