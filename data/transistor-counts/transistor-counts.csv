@@ -81,7 +81,7 @@ Six-core zEC12,2750000000,2012,IBM,32 nm,597 mm²
 12-core POWER8,4200000000,2013,IBM,22 nm,650 mm²
 15-core Xeon Ivy Bridge-EX,4310000000,2014,Intel,22 nm,541 mm²
 62-core Xeon Phi,5000000000,2012,Intel,22 nm,
-#"Apple A7 (dual-core ARM64 ""mobile SoC"")",1000000000,2013,Apple,28 nm,102 mm²
+#Apple A7 (dual-core ARM64 "mobile SoC"),1000000000,2013,Apple,28 nm,102 mm²
 Xbox One main SoC,5000000000,2013,Microsoft/AMD,28 nm,363 mm²
 Apple A8 (dual-core ARM64 "mobile SoC"),2000000000,2014,Apple,20 nm,89 mm²
 Apple A8X (tri-core ARM64 "mobile SoC"),3000000000,2014,Apple,20 nm,
