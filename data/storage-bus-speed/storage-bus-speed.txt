@@ -1,0 +1,8 @@
+#name    year  bits_per_sec
+ATA      1986        26.4e6
+ATA-33   1996         264e6
+ATA-100  2000         800e6
+SATA     2001         1.5e9
+SATA2    2005           3e9
+SATA3    2009           6e9
+SATA3.2  2013          16e9

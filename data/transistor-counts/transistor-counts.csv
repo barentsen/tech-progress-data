@@ -1,0 +1,87 @@
+#processor,transistors,year,manufacturer,process,area
+Intel 4004,2300,1971,Intel,10 µm,12 mm²
+Intel 8008,3500,1972,Intel,10 µm,14 mm²
+MOS Technology 6502,3510,1975,MOS Technology,8 μm,21 mm²
+Motorola 6800,4100,1974,Motorola,6 μm,16 mm²
+Intel 8080,4500,1974,Intel,6 μm,20 mm²
+RCA 1802,5000,1974,RCA,5 μm,27 mm²
+Intel 8085,6500,1976,Intel,3 μm,20 mm²
+Zilog Z80,8500,1976,Zilog,4 μm,18 mm²
+Motorola 6809,9000,1978,Motorola,5 μm,21 mm²
+Intel 8086,29000,1978,Intel,3 μm,33 mm²
+Intel 8088,29000,1979,Intel,3 μm,33 mm²
+WDC 65C02,11500,1981,WDC,3 µm,6 mm²
+Intel 80186,55000,1982,Intel,3 μm,60 mm²
+Motorola 68000,68000,1979,Motorola,3.5 μm,44 mm²
+Intel 80286,134000,1982,Intel,1.5 µm,49 mm²
+WDC 65C816,22000,1983,WDC,9 mm²,
+Motorola 68020,200000,1984,Motorola,2 μm,
+Intel 80386,275000,1985,Intel,1.5 µm,104 mm²
+ARM 1,25000,1985,Acorn,,
+Novix NC4016,16000,1985,Harris Corporation,3 μm[7],
+ARM 2,25000,1986,Acorn,,
+Intel i960,250000,1988,Intel,0.6 µm,
+Intel 80486,1180235,1989,Intel,1 µm,173 mm²
+ARM 3,300000,1989,Acorn,,
+R4000,1350000,1991,MIPS,1.0 µm,213 mm²
+ARM 6,30000,1991,ARM,,
+Pentium,3100000,1993,Intel,0.8 µm,294 mm²
+ARM 7,578977,1994,ARM,,68.51 mm²
+Pentium Pro,5500000,1995,Intel,0.5 µm,307 mm²
+AMD K5,4300000,1996,AMD,0.5 µm,251 mm²
+Pentium II Klamath,7500000,1997,Intel,0.35 µm,195 mm²
+Pentium II Deschutes,7500000,1998,Intel,0.25 µm,113 mm²
+AMD K6,8800000,1997,AMD,0.35 µm,162 mm²
+Pentium III Katmai,9500000,1999,Intel,0.25 µm,128 mm²
+Pentium III Coppermine,21000000,2000,Intel,180 nm,80 mm²
+Pentium II Mobile Dixon,27400000,1999,Intel,180 nm,180 mm²
+Pentium III Tualatin,45000000,2001,Intel,130 nm,81 mm²
+AMD K6-III,21300000,1999,AMD,0.25 µm,118 mm²
+AMD K7,22000000,1999,AMD,0.25 µm,184 mm²
+Pentium 4 Willamette,42000000,2000,Intel,180 nm,217 mm²
+Pentium 4 Northwood,55000000,2002,Intel,130 nm,145 mm²
+Pentium 4 Prescott,112000000,2004,Intel,90 nm,110 mm²
+Pentium 4 Prescott-2M,169000000,2005,Intel,90 nm,143 mm²
+Pentium 4 Cedar Mill,184000000,2006,Intel,65 nm,90 mm²
+Atom,47000000,2008,Intel,45 nm,24 mm²
+Barton,54300000,2003,AMD,130 nm,101 mm²
+AMD K8,105900000,2003,AMD,130 nm,193 mm²
+Itanium 2 McKinley,220000000,2002,Intel,180 nm,421 mm²
+Cell,241000000,2006,Sony/IBM/Toshiba,90 nm,221 mm²
+Core 2 Duo Conroe,291000000,2006,Intel,65 nm,143 mm²
+Core 2 Duo Allendale,169000000,2007,Intel,65 nm,111 mm²
+Itanium 2 Madison 6M,410000000,2003,Intel,130 nm,374 mm²
+AMD K10 quad-core 2M L3,463000000,2007,AMD,65 nm,283 mm²
+ARM Cortex-A9,26000000,2007,ARM,,
+AMD K10 quad-core 6M L3,758000000,2008,AMD,45 nm,258 mm²
+Itanium 2 with 9 MB cache,592000000,2004,Intel,130 nm,432 mm²
+Core 2 Duo Wolfdale,411000000,2007,Intel,45 nm,107 mm²
+Core 2 Duo Wolfdale3M,230000000,2008,Intel,45 nm,83 mm²
+Core i7 (Quad),731000000,2008,Intel,45 nm,263 mm²
+POWER6,789000000,2007,IBM,65 nm,341 mm²
+Six-core Opteron 2400,904000000,2009,AMD,45 nm,346 mm²
+16-core SPARC T3,1000000000,2010,Sun/Oracle,40 nm,377 mm²
+Quad-core + GPU Core i7,1160000000,2011,Intel,32 nm,216 mm²
+Six-core Core i7 (Gulftown),1170000000,2010,Intel,32 nm,240 mm²
+8-core POWER7 32M L3,1200000000,2010,IBM,45 nm,567 mm²
+8-core AMD Bulldozer,1200000000,2012,AMD,32 nm,315 mm²
+Quad-core + GPU AMD Trinity,1303000000,2012,AMD,32 nm,246 mm²
+Quad-core z196[15],1400000000,2010,IBM,45 nm,512 mm²
+Quad-core + GPU Core i7,1400000000,2012,Intel,22 nm,160 mm²
+Dual-core Itanium 2,1700000000,2006,Intel,90 nm,596 mm²
+Six-core Xeon 7400,1900000000,2008,Intel,45 nm,503 mm²
+Quad-core Itanium Tukwila,2000000000,2010,Intel,65 nm,699 mm²
+8-core POWER7+ 80 MB L3 cache,2100000000,2012,IBM,32 nm,567 mm²
+"Six-core Core i7/8-core Xeon E5
+(Sandy Bridge-E/EP)",2270000000,2011,Intel,32 nm,434 mm²
+8-core Xeon Nehalem-EX,2300000000,2010,Intel,45 nm,684 mm²
+10-core Xeon Westmere-EX,2600000000,2011,Intel,32 nm,512 mm²
+Six-core zEC12,2750000000,2012,IBM,32 nm,597 mm²
+8-core Itanium Poulson,3100000000,2012,Intel,32 nm,544 mm²
+12-core POWER8,4200000000,2013,IBM,22 nm,650 mm²
+15-core Xeon Ivy Bridge-EX,4310000000,2014,Intel,22 nm,541 mm²
+62-core Xeon Phi,5000000000,2012,Intel,22 nm,
+#"Apple A7 (dual-core ARM64 ""mobile SoC"")",1000000000,2013,Apple,28 nm,102 mm²
+Xbox One main SoC,5000000000,2013,Microsoft/AMD,28 nm,363 mm²
+Apple A8 (dual-core ARM64 "mobile SoC"),2000000000,2014,Apple,20 nm,89 mm²
+Apple A8X (tri-core ARM64 "mobile SoC"),3000000000,2014,Apple,20 nm,

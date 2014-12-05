@@ -1,0 +1,56 @@
+backend: TkAgg
+interactive  : False
+
+lines.antialiased : True         # render lines in antialised (no jaggies)
+
+patch.linewidth        : 0.5    # edge width in points
+patch.facecolor        : 348ABD
+patch.edgecolor        : eeeeee
+patch.antialiased      : True    # render patches in antialised (no jaggies)
+
+font.family         : sans-serif
+font.size           : 14.0
+font.sans-serif : Open Sans
+
+text.color          : 333333
+
+axes.facecolor      : f3f3f3   # axes background color
+axes.edgecolor      : bcbcbc   # axes edge color
+axes.linewidth      : 1.0     # edge linewidth
+axes.grid           : False   # display grid or not
+axes.titlesize      : large   # fontsize of the axes title
+axes.labelsize      : 18  # fontsize of the x any y labels
+axes.labelweight    : normal  # weight of the x and y labels
+axes.labelcolor     : 333333
+axes.axisbelow      : True   # whether axis gridlines and ticks are below
+
+axes.unicode_minus  : True
+axes.color_cycle    : E41A1C, 377EB8, 4DAF4A, 984EA3, FF7F00
+
+xtick.major.size     : 8      # major tick size in points
+xtick.minor.size     : 4      # minor tick size in points
+xtick.major.pad      : 4      # distance to major tick label in points
+xtick.minor.pad      : 4      # distance to the minor tick label in points
+xtick.color          : 333333      # color of the tick labels
+xtick.labelsize      : 14 # fontsize of the tick labels
+xtick.direction      : in     # direction: in or out
+
+ytick.major.size     : 6      # major tick size in points
+ytick.minor.size     : 3      # minor tick size in points
+ytick.major.pad      : 5      # distance to major tick label in points
+ytick.minor.pad      : 5      # distance to the minor tick label in points
+ytick.color          : 333333      # color of the tick labels
+ytick.labelsize      : 14 # fontsize of the tick labels
+ytick.direction      : in     # direction: in or out
+
+legend.fancybox      : True 
+figure.figsize   : 8.485, 6 
+figure.facecolor : 0.85
+figure.edgecolor : 0.50
+
+figure.subplot.left    : 0.12  # the left side of the subplots of the figure
+figure.subplot.bottom  : 0.12    # the bottom of the subplots of the figure
+figure.subplot.right   : 0.97    # the right side of the subplots of the figure
+figure.subplot.top     : 0.90    # the top of the subplots of the figure
+figure.subplot.wspace  : 0.2    # the amount of width reserved for blank space between subplots
+figure.subplot.hspace  : 0.25    # the amount of height reserved for white space between subplots
