@@ -1,11 +1,13 @@
 #!/usr/bin/env python
-"""Module to aid plotting the datasets on technological progress."""
+"""Graphs the progress of various technologies."""
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 __author__ = "Geert Barentsen"
 
 import os
+import numpy as np
 import pylab as plt
+import logging
 from astropy.table import Table
 
 
@@ -23,95 +25,180 @@ BLUE = "#2c3e50"
 #########
 
 class DataSet(object):
+    labelcolumn = None
+    xlim, ylim = None, None
 
-    xlabel = ""
-    ylabel = ""
+    def __init__(self, filename=None):
+        # Read the data
+        if filename == None:
+            filename = os.path.join(DATADIR, self.prefix, self.prefix+'.csv')
+        self.table = Table.read(filename, format='ascii')
+        self.xdata = self.table[self.xcolumn]
+        self.ydata = self.table[self.ycolumn]
+        
+    def trendfit(self):
+        # Fit the exponential trend
+        return np.polyfit(self.xdata, np.log10(self.ydata), 1)
 
-    def __init__(self, xdata, ydata):
-        self.xdata = xdata
-        self.ydata = ydata
-
-    def get_plot(self):
-        pp = ProgressPlot()
-        pp.add_dataset(self)
-        return pp
-
-
-class ProgressPlot(object):
-
-    def __init__(self):
-        self.fig = plt.figure()
+    def plot(self, trendfit=True, title=True):
+        self.fig = plt.figure(figsize=(8, 4))
         self.ax = plt.subplot(111)
         self.ax.set_yscale("log")
+        self.ax.scatter(self.xdata,
+                        self.ydata, 
+                        facecolor=RED,
+                        s=70,
+                        linewidth=1,
+                        edgecolor='black')
 
-    def add_dataset(self, dataset):
-        self.ax.scatter(dataset.xdata, dataset.ydata, 
-                    lw=1, edgecolor='black',
-                    facecolor=BLUE, s=70)
+        # Show labels next to the data points
+        if self.labelcolumn:
+            labels = self.table[self.labelcolumn]
+            for i in range(len(labels)):
+                plt.text(self.xdata[i] + 0.6, self.ydata[i], labels[i],
+                ha="left",
+                va="center",
+                fontsize=14,
+                backgroundcolor="#f6f6f6")
 
-    def show(self):
-        plt.show()
+        if trendfit:
+            self.ax.plot(self.xdata, 10**np.polyval(self.trendfit(), self.xdata),
+                         c=BLUE, lw=2, alpha=0.5, zorder=-10)
+            if title:
+                self.ax.text(0.05, 0.95,
+                             '{0}\ndouble every {1:.0f} months'.format(
+                                                    self.title,
+                                                    self.get_doubling_time()),
+                             va='top',
+                             transform=self.ax.transAxes,
+                             fontsize=18)
 
-    def save(self, filename):
-        plt.fig.savefig(filename)
+        self.ax.set_xlabel(self.xlabel)
+        self.ax.set_ylabel(self.ylabel)
+        
+        if self.xlim:
+            self.ax.set_xlim(self.xlim)
+        if self.ylim:
+            self.ax.set_ylim(self.ylim)
+        
+        # Aesthetics
+        self.ax.spines["right"].set_visible(False)
+        self.ax.spines["top"].set_visible(False)
+        self.ax.get_xaxis().tick_bottom()
+        self.ax.get_yaxis().tick_left()
+        self.fig.tight_layout()
+        return self.fig
+
+    def get_doubling_time(self):
+        """Returns number of months it takes for the y-axis data to double."""
+        doubling_time = 12 * np.log10(2) / self.trendfit()[0]
+        logging.info("{0} doubles every {1:.2f} months".format(self.prefix, doubling_time))
+        return doubling_time
+
+    def get_annual_increase(self):
+        """Returns the percentage increase per year."""
+        annual_fractional_increase = 100 * (10**self.trendfit()[0]) - 100
+        logging.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
+        return annual_fractional_increase
 
 
 class TransistorCountData(DataSet):
+    title = "CPU transistor counts"
+    prefix = "transistor-counts"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "transistors"
+    ylabel = "Transistors"
+    xlim = [1965, 2020]
 
-    xlabel = "Transistor count"
-    ylabel = "Year of introduction"
-
-    def __init__(self):
-        filename = os.path.join(DATADIR, 'transistor-counts', 'transistor-counts.csv')
-        self.table = Table.read(filename, format='ascii.csv')
-        super(TransistorCountData, self).__init__(self.table['year'], self.table['transistors'])
-
-    def get_plot(self):
-        myplot = super(TransistorCountData, self).get_plot()
+    def plot(self):
+        super(TransistorCountData, self).plot()
         # Annotate the era of multi-core processors
-        plt.plot([2006, 2014], [5e6, 5e6], lw=2.5, c='black')
-        myplot.ax.text(2010, 1.8e6, "Multi-core", fontsize=18, ha="center")
-        return myplot
+        self.ax.plot([2006, 2014], [5e6, 5e6], lw=2.5, c='black')
+        self.ax.text(2010, 1.7e6, "Multi-core", fontsize=15, ha="center")
+        return self.fig
 
 
-class StorageBusSpeedData(DataSet):
-
-    xlabel = "Bits per second"
-    ylabel = "Year"
-
-    def __init__(self):
-        filename = os.path.join(DATADIR, 'storage-bus-speed', 'storage-bus-speed.txt')
-        self.table = Table.read(filename, format='ascii')
-        super(StorageBusSpeedData, self).__init__(self.table['year'], self.table['bits_per_sec'])
+class SupercomputerSpeedData(DataSet):
+    title = "Supercomputer speeds"
+    prefix = "fastest-supercomputer"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "flops"
+    ylabel = "FLOPS"
 
 
 class HardDriveCapacityData(DataSet):
+    title = "Hard disk drive capacities"
+    prefix = "hard-drive-capacity"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "bytes"
+    ylabel = "Bytes"
 
-    xlabel = "Bytes"
-    ylabel = "Year"
 
-    def __init__(self):
-        filename = os.path.join(DATADIR, 'hard-drive-capacity', 'hard-drive-capacity.txt')
-        self.table = Table.read(filename, format='ascii')
-        super(HardDriveCapacityData, self).__init__(self.table['year'], self.table['bytes'])
+class ResearchInternetSpeedData(DataSet):
+    title = "Internet speeds"
+    prefix = "research-internet-speed"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "bps"
+    ylabel = "Bits/s"
+
+
+class StorageBusSpeedData(DataSet):
+    title = "Storage bus speeds"
+    prefix = "storage-bus-speed"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "bps"
+    ylabel = "Bits/s"
+    labelcolumn = "name"
+    xlim = [1980, 2020]
 
 
 class TelescopePixelCountsData(DataSet):
-
-    xlabel = "Pixels per second (typical)"
-    ylabel = "Start of science"
+    title = "Pixel rates of optical surveys"
+    prefix = "telescope-pixel-counts"
+    xcolumn = "year"
+    xlabel = "Start of science"
+    ycolumn = "pixels"
+    ylabel = "Pixels/s"
+    labelcolumn = "name"
+    xlim = [1998, 2025]
 
     def __init__(self):
-        filename = os.path.join(DATADIR, 'telescope-pixel-counts', 'telescope-pixel-counts.txt')
-        self.table = Table.read(filename, format='ascii')
-        pixels_per_sec = self.table['pixels'] / self.table['cycle_time']
-        super(TelescopePixelCountsData, self).__init__(self.table['year'], pixels_per_sec)
+        super(TelescopePixelCountsData, self).__init__()
+        self.ydata = self.table['pixels'] / self.table['cycle_time']
 
 
-"""Example: how to create a plot."""
+class TelescopePixelCountsInfraredData(DataSet):
+    title = "Pixel rates of near-infrared surveys"
+    prefix = "telescope-pixel-counts-near-infrared"
+    xcolumn = "year"
+    xlabel = "Start of science"
+    ycolumn = "pixels"
+    ylabel = "Pixels/s"
+    labelcolumn = "name"
+    #xlim = [1998, 2025]
+
+    def __init__(self):
+        super(TelescopePixelCountsInfraredData, self).__init__()
+        self.ydata = self.table['pixels'] / self.table['cycle_time']
+
+
 if __name__ == '__main__':
-    #tc = TransistorCountData()
-    #tc = StorageBusSpeedData()
-    tc = TelescopePixelCountsData()
-    p = tc.get_plot()
-    plt.show()
+    """Create graphs for all datasets in the repository."""
+    DESTINATION_DIR = 'graphs'
+    datasets = [SupercomputerSpeedData(),
+                HardDriveCapacityData(),
+                ResearchInternetSpeedData(),
+                StorageBusSpeedData(),
+                TelescopePixelCountsData(),
+                TelescopePixelCountsInfraredData(),
+                TransistorCountData()]
+    for ds in datasets:
+        for extension in ['png', 'pdf']:
+            output_filename = os.path.join(DESTINATION_DIR,
+                                           ds.prefix+'.'+extension)
+            ds.plot().savefig(output_filename, dpi=200)
