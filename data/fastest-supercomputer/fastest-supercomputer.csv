@@ -1,0 +1,22 @@
+#year,name,flops
+1993,Fujitsu Numerical Wind Tunnel,124.50e9
+1993,Intel Paragon XP/S 140,143.40e9
+1994,Fujitsu Numerical Wind Tunnel,170.40e9
+1996,Hitachi SR2201/1024,220.4e9
+1996,Hitachi CP-PACS/2048,368.2e9
+1997,Intel ASCI Red/9152,1.338e12
+1999,Intel ASCI Red/9632,2.3796e12
+2000,IBM ASCI White,7.226e12
+2002,NEC Earth Simulator,35.86e12
+2004,IBM Blue Gene/L,70.72e12
+2005,IBM Blue Gene/L,136.8e12
+2005,IBM Blue Gene/L,280.6e12
+2007,IBN Blue Gene/L,478.2e12
+2008,IBM Roadrunner,1.026e15
+2008,IBM Roadrunner,1.105e15
+2009,Cray Jaguar,1.759e15
+2010,Tianhe-IA,2.566e15
+2011,Fujitsu K computer,10.51e15
+2012,IBM Sequoia,16.32e15
+2012,Cray Titan,17.59e15
+2013,NUDT Tianhe-2,33.86e15
