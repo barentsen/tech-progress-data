@@ -1,9 +1,9 @@
-Data on the evolution of transistor counts (i.e. Moore's law)
-=============================================================
+Data on the evolution of transistor counts
+==========================================
 
 Description
 -----------
-`transistor-count.csv` details the year of introduction and number of transistors for more than 80 microprocessors since 1971. 
+`transistor-count.csv` details the year of introduction and the number of transistors for microprocessors introduced since 1971.  This data can be used to measure Moore's law.
 
 Source
 ------
