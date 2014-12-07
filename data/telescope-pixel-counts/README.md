@@ -3,7 +3,7 @@ Data on the evolution of CCD pixel counts in telescopes
 
 Description
 -----------
-`telescope-pixel-counts.txt` details the year (start of operations), the number of pixels, and the typical cycle time (time between exposures in seconds) for the CCD cameras on astronomical telescopes which are being used for major surveys.
+`telescope-pixel-counts.csv` details the year (start of operations), the number of pixels, and the typical cycle time (time between exposures in seconds) for the CCD cameras on astronomical telescopes which are being used for major surveys.
 
 Source
 ------

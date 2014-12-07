@@ -41,7 +41,7 @@ class DataSet(object):
         return np.polyfit(self.xdata, np.log10(self.ydata), 1)
 
     def plot(self, trendfit=True, title=True):
-        self.fig = plt.figure(figsize=(8, 4))
+        self.fig = plt.figure(figsize=(8, 5))
         self.ax = plt.subplot(111)
         self.ax.set_yscale("log")
         self.ax.scatter(self.xdata,
@@ -119,6 +119,19 @@ class TransistorCountData(DataSet):
         return self.fig
 
 
+class DiskDrivePriceData(DataSet):
+    title = "Storage per dollar ratios"
+    prefix = "disk-drive-price"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "size_mb"
+    ylabel = "MB per dollar"
+
+    def __init__(self):
+        super(DiskDrivePriceData, self).__init__()
+        self.ydata = self.table['size_mb'] / self.table['cost_usd']
+
+
 class SupercomputerSpeedData(DataSet):
     title = "Supercomputer speeds"
     prefix = "fastest-supercomputer"
@@ -126,15 +139,6 @@ class SupercomputerSpeedData(DataSet):
     xlabel = "Year"
     ycolumn = "flops"
     ylabel = "FLOPS"
-
-
-class HardDriveCapacityData(DataSet):
-    title = "Hard disk drive capacities"
-    prefix = "hard-drive-capacity"
-    xcolumn = "year"
-    xlabel = "Year"
-    ycolumn = "bytes"
-    ylabel = "Bytes"
 
 
 class ResearchInternetSpeedData(DataSet):
@@ -190,8 +194,8 @@ class TelescopePixelCountsInfraredData(DataSet):
 if __name__ == '__main__':
     """Create graphs for all datasets in the repository."""
     DESTINATION_DIR = 'graphs'
-    datasets = [SupercomputerSpeedData(),
-                HardDriveCapacityData(),
+    datasets = [DiskDrivePriceData(),
+                SupercomputerSpeedData(),
                 ResearchInternetSpeedData(),
                 StorageBusSpeedData(),
                 TelescopePixelCountsData(),

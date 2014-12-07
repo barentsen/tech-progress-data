@@ -3,7 +3,7 @@ Data on the evolution of supercomputer speeds
 
 Description
 -----------
-`fastest-supercomputer.txt` details the name, year, and peak speed (in FLOPS) of supercomputers which appeared at the top of the "Top500" list since 1993.
+`fastest-supercomputer.csv` details the name, year, and peak speed (in FLOPS) of supercomputers which appeared at the top of the "Top500" list since 1993.
 
 Source
 ------

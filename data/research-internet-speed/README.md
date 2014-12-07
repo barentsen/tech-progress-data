@@ -3,7 +3,7 @@ Data on the evolution of Internet speeds
 
 Description
 -----------
-`uk-research-network-speed.txt` details the name, year, and speed (bits per second) of the UK academic research network, called "Janet".
+`uk-research-network-speed.csv` details the name, year, and speed (bits per second) of the UK academic research network, called "Janet".
 
 Source
 ------

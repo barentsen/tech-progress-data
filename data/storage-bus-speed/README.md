@@ -3,7 +3,7 @@ Data on the evolution of storage bus speeds
 
 Description
 -----------
-`storage-bus-speed.txt` details the name, year of introduction, and maximum speed (bits per second) of a number of computer bus interfaces that connect host bus adapters to mass storage devices.  It is meant to illustrate the rate of technological improvement in data transfer rates from hard disk drives.
+`storage-bus-speed.csv` details the name, year of introduction, and maximum speed (bits per second) of a number of computer bus interfaces that connect host bus adapters to mass storage devices.  It is meant to illustrate the rate of technological improvement in data transfer rates from hard disk drives.
 
 Source
 ------
