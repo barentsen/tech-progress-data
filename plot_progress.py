@@ -58,7 +58,7 @@ class DataSet(object):
                 plt.text(self.xdata[i] + 0.6, self.ydata[i], labels[i],
                 ha="left",
                 va="center",
-                fontsize=14,
+                fontsize=16,
                 backgroundcolor="#f6f6f6")
 
         if trendfit:
@@ -101,6 +101,13 @@ class DataSet(object):
         logging.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
         return annual_fractional_increase
 
+    def get_prediction(self):
+        """Returns the increase after 22 years."""
+        myfit = self.trendfit()
+        predict = 10**np.polyval(self.trendfit(), [2000, 2022])
+        increase = predict[1] / predict[0]
+        return "{0}: increased {1:.0f}x between 2000 and 2022".format(self.prefix, increase)
+
 
 class TransistorCountData(DataSet):
     title = "CPU transistor counts"
@@ -111,8 +118,8 @@ class TransistorCountData(DataSet):
     ylabel = "Transistors"
     xlim = [1965, 2020]
 
-    def plot(self):
-        super(TransistorCountData, self).plot()
+    def plot(self, **kwargs):
+        super(TransistorCountData, self).plot(**kwargs)
         # Annotate the era of multi-core processors
         self.ax.plot([2006, 2014], [5e6, 5e6], lw=2.5, c='black')
         self.ax.text(2010, 1.7e6, "Multi-core", fontsize=15, ha="center")
@@ -205,4 +212,5 @@ if __name__ == '__main__':
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,
                                            ds.prefix+'.'+extension)
-            ds.plot().savefig(output_filename, dpi=200)
+            ds.plot(title=True).savefig(output_filename, dpi=200)
+        #print(ds.get_prediction())
