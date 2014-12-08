@@ -7,12 +7,17 @@ This repository aims to collate data on the technological process of microproces
 
 Usage
 -----
-Create a plot illustrating the evolution of transistor counts in microprocessors (i.e. Moore's law):
+To create a graph and fit the exponential trend of all the data sets in this repository, run:
 
-```Python
-import plot_progress
-plot_progress.TransistorCountData().get_plot().show()
 ```
+python plot_progress.py
+```
+
+Dependencies
+------------
+* matplotlib
+* numpy
+* astropy
 
 License
 -------
