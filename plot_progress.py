@@ -7,8 +7,9 @@ __author__ = "Geert Barentsen"
 import os
 import numpy as np
 import pylab as plt
-import logging
+
 from astropy.table import Table
+from astropy import log
 
 
 ###########
@@ -63,12 +64,11 @@ class DataSet(object):
 
         if trendfit:
             self.ax.plot(self.xdata, 10**np.polyval(self.trendfit(), self.xdata),
-                         c=BLUE, lw=2, alpha=0.5, zorder=-10)
+                         color=BLUE, lw=2, alpha=0.5, zorder=-10)
             if title:
                 self.ax.text(0.05, 0.95,
-                             '{0}\ndouble every {1:.0f} months'.format(
-                                                    self.title,
-                                                    self.get_doubling_time()),
+                             '{0}\n{1}'.format(self.title,
+                                               self.get_doubling_text()),
                              va='top',
                              transform=self.ax.transAxes,
                              fontsize=18)
@@ -92,13 +92,15 @@ class DataSet(object):
     def get_doubling_time(self):
         """Returns number of months it takes for the y-axis data to double."""
         doubling_time = 12 * np.log10(2) / self.trendfit()[0]
-        logging.info("{0} doubles every {1:.2f} months".format(self.prefix, doubling_time))
         return doubling_time
+        
+    def get_doubling_text(self):
+        return "double every {:.0f} months".format(self.get_doubling_time())
 
     def get_annual_increase(self):
         """Returns the percentage increase per year."""
         annual_fractional_increase = 100 * (10**self.trendfit()[0]) - 100
-        logging.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
+        log.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
         return annual_fractional_increase
 
     def get_prediction(self):
@@ -121,7 +123,7 @@ class TransistorCountData(DataSet):
     def plot(self, **kwargs):
         super(TransistorCountData, self).plot(**kwargs)
         # Annotate the era of multi-core processors
-        self.ax.plot([2006, 2014], [5e6, 5e6], lw=2.5, c='black')
+        self.ax.plot([2006, 2014], [5e6, 5e6], lw=2.5, color='black')
         self.ax.text(2010, 1.7e6, "Multi-core", fontsize=15, ha="center")
         return self.fig
 
@@ -198,6 +200,28 @@ class TelescopePixelCountsInfraredData(DataSet):
         self.ydata = self.table['pixels'] / self.table['cycle_time']
 
 
+class CranialCapacityData(DataSet):
+    title = "The cranial capacity of humans"
+    prefix = "cranial-capacity"
+    xcolumn = "year"
+    xlabel = "Million years BC"
+    ycolumn = "brain_cc"
+    ylabel = "Cranial capacity [cm³]"
+    xlim = [-3.5, 0.1]
+
+    def __init__(self):
+        super(CranialCapacityData, self).__init__()
+        self.xdata = self.table['year'] / 1e6
+
+    def get_doubling_time(self):
+        """Returns number of months it takes for the y-axis data to double."""
+        doubling_time = np.log10(2) / self.trendfit()[0]
+        return doubling_time
+        
+    def get_doubling_text(self):
+        return "doubles every {:.1f} million years".format(self.get_doubling_time())
+
+
 if __name__ == '__main__':
     """Create graphs for all datasets in the repository."""
     DESTINATION_DIR = 'graphs'
@@ -207,10 +231,12 @@ if __name__ == '__main__':
                 StorageBusSpeedData(),
                 TelescopePixelCountsData(),
                 TelescopePixelCountsInfraredData(),
-                TransistorCountData()]
+                TransistorCountData(),
+                CranialCapacityData()]
     for ds in datasets:
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,
                                            ds.prefix+'.'+extension)
+            log.info("Writing {}".format(output_filename))
             ds.plot(title=True).savefig(output_filename, dpi=200)
         #print(ds.get_prediction())

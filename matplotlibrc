@@ -8,9 +8,8 @@ patch.facecolor        : 348ABD
 patch.edgecolor        : eeeeee
 patch.antialiased      : True    # render patches in antialised (no jaggies)
 
-font.family         : sans-serif
+font.family         : Open Sans
 font.size           : 14.0
-font.sans-serif : Open Sans
 
 text.color          : 333333
 
