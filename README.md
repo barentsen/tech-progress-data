@@ -2,7 +2,9 @@ The data behind Moore's law
 ===========================
 ***Data & graphs on the progress of technology; visualizing the road to the singularity™***
 
-This repository collates and visualizes data sets which demonstrate the increasing trends of computing power, storage capacity, astronomical surveys, etc.  The aim of these graphs is to encourage discussions related to *Moore's law* to be based on data, rather than assumptions or hear-say.  The various sources behind the data points are documented inside the `data` directory of this repository.
+This repository collates and visualizes data sets which demonstrate the increasing trends of computing power, storage capacity, astronomical surveys, etc.  The aim of these graphs is to encourage discussions related to *Moore's law* to be based on data, rather than assumptions or hear-say.  
+
+The various sources behind the data points are documented inside the `data` directory of this repository, and the graphs can be reproduced using the included `plot_progress.py` script.
 
 ## The Graphs
 
