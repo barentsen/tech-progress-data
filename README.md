@@ -2,7 +2,7 @@ Data & graphs on the progress of technology
 ===========================================
 ***Showing the data behind Moore's law™***
 
-This repository collates and visualizes data sets which demonstrate the increasing trends of computing power, storage capacity, astronomical surveys, etc.  The aim of these graphs is to encourage discussions related to *Moore's law* to be based on data, rather than assumptions or hear-say.
+This repository collates and visualizes data sets which demonstrate the increasing trends of computing power, storage capacity, astronomical surveys, etc.  The aim of these graphs is to encourage discussions related to *Moore's law* to be based on data, rather than assumptions or hear-say.  The various sources behind the data points are documented inside the `data` directory of this repository.
 
 ## The Graphs
 
