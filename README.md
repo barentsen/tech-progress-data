@@ -1,6 +1,6 @@
 Data & graphs on the progress of technology
 ===========================================
-***Visualizing the road to the technological singularity.***
+***Visualizing the road to the technological singularity™***
 
 ### Description
 This repository aims to collate data on the technological process of microprocessors, networks, telescopes, etc.
