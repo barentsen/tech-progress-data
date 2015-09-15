@@ -1,9 +1,35 @@
 Data & graphs on the progress of technology
 ===========================================
-***Visualizing the road to the technological singularity™***
+***Showing the data behind Moore's law™***
 
-### Description
-This repository aims to collate data on the technological process of microprocessors, networks, telescopes, etc.
+This repository collates and visualizes data sets which demonstrate the increasing trends of computing power, storage capacity, astronomical surveys, etc.  The aim is to encourage discussions related to the impact of *Moore's law*, in its various forms, which are based on data rather than assumptions or hear-say.
+
+## Output
+
+### Computing power
+
+![Supercomputer speeds double every 13 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/fastest-supercomputer.png)
+
+![CPU transistor counts double every 23 months](https://raw.githubusercontent.com/barentsen/tech-progress-data/master/graphs/transistor-counts.png)
+
+### Storage & I/O
+
+![Internet speeds double every 16 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/research-internet-speed.png)
+
+![Storage-per-dollar ratios double every 23 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/disk-drive-price.png)
+
+![Storage bus speeds double every 35 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/storage-bus-speed.png)
+
+### Astronomical surveys
+
+![Pixel rates of near-infrared astronomy surveys double every 41 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/telescope-pixel-counts-near-infrared.png)
+
+![Pixel rates of optical astronomical surveys double every 41 months](https://github.com/barentsen/tech-progress-data/blob/master/graphs/telescope-pixel-counts.png)
+
+### Biology
+
+![The cranial capacity of humans doubles every 1.5 million years](https://raw.githubusercontent.com/barentsen/tech-progress-data/master/graphs/cranial-capacity.png)
+
 
 ### Slides
 A short presentation using these data is shown here:
@@ -17,14 +43,18 @@ To create the graphs and fit the exponential trends to all the data sets in this
 python plot_progress.py
 ```
 
-### Dependencies
+## Dependencies
 * matplotlib
 * numpy
 * astropy
 
-### Contributing
+## Contributing
 Additional data sets, or corrections to the existing ones, are welcome. Please open a pull request!
 
-### License
+## Authors
+ * Geert Barentsen (@barentsen)
+ * Josh Peek (@jegpeek)
+
+## License
 Made available under the MIT License, 
 unless otherwise specified in the README files inside the `data` sub-directories.
