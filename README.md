@@ -25,6 +25,10 @@ Dependencies
 * numpy
 * astropy
 
+Contributions
+-------------
+Additional data sets, or revisions of the existing ones, are welcomed. Please open a pull request.
+
 License
 -------
-Made available under the MIT License. For details see the LICENSE file.
+Made available under the MIT License, unless otherwise noted in the README files inside the `data` directory.
