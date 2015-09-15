@@ -25,9 +25,9 @@ Dependencies
 * numpy
 * astropy
 
-Contributions
--------------
-Additional data sets, or revisions of the existing ones, are welcomed. Please open a pull request.
+Contributing
+------------
+Additional data sets, or revisions of the existing ones, are welcome. Please open a pull request.
 
 License
 -------
