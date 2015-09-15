@@ -31,12 +31,12 @@ This repository collates and visualizes data sets which demonstrate the increasi
 ![The cranial capacity of humans doubles every 1.5 million years](https://raw.githubusercontent.com/barentsen/tech-progress-data/master/graphs/cranial-capacity.png)
 
 
-### Slides
+## Slides
 A short presentation using these data is shown here:
 
 https://speakerdeck.com/barentsen/a-3-minute-rant-on-the-deluge-of-data-in-astronomy
 
-### Usage
+## Usage
 To create the graphs and fit the exponential trends to all the data sets in this repository, run:
 
 ```
@@ -54,6 +54,7 @@ Additional data sets, or corrections to the existing ones, are welcome. Please o
 ## Authors
  * Geert Barentsen (@barentsen)
  * Josh Peek (@jegpeek)
+ * See the `README` files in the sub-directories under `data` for data source credits.
 
 ## License
 Made available under the MIT License, 
