@@ -7,6 +7,7 @@ __author__ = "Geert Barentsen"
 import os
 import numpy as np
 import pylab as plt
+import matplotlib.ticker as ticker
 
 from astropy.table import Table
 from astropy import log
@@ -17,7 +18,7 @@ from astropy import log
 ###########
 
 DATADIR = "data"
-RED = "#c0392b"
+RED = "#e74c3c"
 BLUE = "#2c3e50"
 
 
@@ -66,20 +67,39 @@ class DataSet(object):
             self.ax.plot(self.xdata, 10**np.polyval(self.trendfit(), self.xdata),
                          color=BLUE, lw=2, alpha=0.5, zorder=-10)
             if title:
+                """
                 self.ax.text(0.05, 0.95,
                              '{0}\n{1}'.format(self.title,
                                                self.get_doubling_text()),
                              va='top',
                              transform=self.ax.transAxes,
                              fontsize=18)
+                """
+                
+                if 'ranial' in self.ylabel:
+                    self.ax.text(0.05, 0.95,
+                                 "+{:.5f}% per year".format(self.get_annual_increase()),
+                                 va='top',
+                                 ha='left',
+                                 transform=self.ax.transAxes,
+                                 fontsize=18)
+                else:
+                    self.ax.text(0.05, 0.95,
+                                 "+{:.0f}% per year".format(self.get_annual_increase()),
+                                 va='top',
+                                 ha='left',
+                                 transform=self.ax.transAxes,
+                                 fontsize=18)
 
-        self.ax.set_xlabel(self.xlabel)
-        self.ax.set_ylabel(self.ylabel)
+        self.ax.set_xlabel(self.xlabel, fontsize=18)
+        self.ax.set_ylabel(self.ylabel, fontsize=18)
         
         if self.xlim:
             self.ax.set_xlim(self.xlim)
         if self.ylim:
             self.ax.set_ylim(self.ylim)
+
+        self.ax.xaxis.set_major_formatter(ticker.FormatStrFormatter('%.0f'))
         
         # Aesthetics
         self.ax.spines["right"].set_visible(False)
@@ -123,8 +143,8 @@ class TransistorCountData(DataSet):
     def plot(self, **kwargs):
         super(TransistorCountData, self).plot(**kwargs)
         # Annotate the era of multi-core processors
-        self.ax.plot([2006, 2014], [5e6, 5e6], lw=2.5, color='black')
-        self.ax.text(2010, 1.7e6, "Multi-core", fontsize=15, ha="center")
+        self.ax.plot([2006, 2018], [5e6, 5e6], lw=2.5, color='black')
+        self.ax.text(2012, 1.7e6, "Multi-core era", fontsize=15, ha="center")
         return self.fig
 
 
@@ -135,6 +155,7 @@ class DiskDrivePriceData(DataSet):
     xlabel = "Year"
     ycolumn = "size_mb"
     ylabel = "MB per dollar"
+    xlim = [1999, 2019]
 
     def __init__(self):
         super(DiskDrivePriceData, self).__init__()
@@ -148,6 +169,7 @@ class SupercomputerSpeedData(DataSet):
     xlabel = "Year"
     ycolumn = "flops"
     ylabel = "FLOPS"
+    xlim = [1991, 2018]
 
 
 class ResearchInternetSpeedData(DataSet):
@@ -171,14 +193,14 @@ class StorageBusSpeedData(DataSet):
 
 
 class TelescopePixelCountsData(DataSet):
-    title = "Pixel rates of optical surveys"
+    title = "Pixel rates of large optical surveys"
     prefix = "telescope-pixel-counts"
     xcolumn = "year"
     xlabel = "Start of science"
     ycolumn = "pixels"
     ylabel = "Pixels/s"
     labelcolumn = "name"
-    xlim = [1998, 2025]
+    xlim = [1998, 2026]
 
     def __init__(self):
         super(TelescopePixelCountsData, self).__init__()
@@ -198,6 +220,26 @@ class TelescopePixelCountsInfraredData(DataSet):
     def __init__(self):
         super(TelescopePixelCountsInfraredData, self).__init__()
         self.ydata = self.table['pixels'] / self.table['cycle_time']
+
+
+class SpacePhotometryData(DataSet):
+    title = "Pixel rates of NASA's photometry missions"
+    prefix = "space-photometry-missions"
+    xcolumn = "year"
+    xlabel = "Launch"
+    ycolumn = "pixels_per_second"
+    ylabel = "Telemetered pixels"
+    labelcolumn = "name"
+    xlim = [2006, 2029]
+
+
+class IAUMembers(DataSet):
+    title = "Number of IAU members"
+    prefix = "iau-members"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "iau_members"
+    ylabel = "Members"
 
 
 class CranialCapacityData(DataSet):
@@ -221,6 +263,12 @@ class CranialCapacityData(DataSet):
     def get_doubling_text(self):
         return "doubles every {:.1f} million years".format(self.get_doubling_time())
 
+    def get_annual_increase(self):
+        """Returns the percentage increase per year."""
+        annual_fractional_increase = 100 * (10**self.trendfit()[0]) - 100
+        annual_fractional_increase = annual_fractional_increase / 1e6
+        log.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
+        return annual_fractional_increase
 
 if __name__ == '__main__':
     """Create graphs for all datasets in the repository."""
@@ -231,8 +279,11 @@ if __name__ == '__main__':
                 StorageBusSpeedData(),
                 TelescopePixelCountsData(),
                 TelescopePixelCountsInfraredData(),
+                SpacePhotometryData(),
+                IAUMembers(),
                 TransistorCountData(),
                 CranialCapacityData()]
+    datasets = [CranialCapacityData()]
     for ds in datasets:
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,

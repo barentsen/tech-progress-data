@@ -84,3 +84,21 @@ Six-core zEC12,2750000000,2012,IBM,32 nm,597 mm²
 Xbox One main SoC,5000000000,2013,Microsoft/AMD,28 nm,363 mm²
 Apple A8 (dual-core ARM64 mobile SoC),2000000000,2014,Apple,20 nm,89 mm²
 Apple A8X (tri-core ARM64 mobile SoC),3000000000,2014,Apple,20 nm,
+Skylake K,1750000000,2015,Intel,14 nm,122 mm²
+Iris Core i7 Broadwell-U,1900000000,2015,Intel,14 nm,133 mm²
+IBM z13,3990000000,2015,IBM,22 nm,678 mm²
+IBM z13 Storage Controller,7100000000,2015,IBM,22 nm,678 mm²
+SPARC M7,10000000000,2015,Oracle,20 nm,   
+Snapdragon 835,3000000000,2016,Qualcomm,10 nm,
+i7 Broadwell-E 3,200000000,2016,Intel,14 nm,246 mm²
+Apple A10 Fusion,3300000000,2016,Apple,16 nm,125 mm²
+Broadwell-E5,7200000000,2016,Intel,14 nm,456 mm²
+Xeon Phi,8000000000,2016,Intel,14 nm,683 mm²
+Apple A11 Bionic,4300000000,2017,Apple,10 nm,89 mm²
+8-core Ryzen,4800000000,2017,AMD,14 nm,192 mm²
+IBM z14,6100000000,2017,IBM,14 nm,696 mm²
+Xbox One X,7000000000,2017,Microsoft/AMD,16 nm,360 mm²
+POWER9,8000000000,2017,IBM,14 nm,695 mm²
+IBM z14,9700000000,2017,IBM,14 nm,696 mm²
+Centriq 2400,18000000000,2017,Qualcomm,10 nm,398 mm2
+32-core AMD Epyc,19200000000,2017,AMD,14 nm,768 mm2

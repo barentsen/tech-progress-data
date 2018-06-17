@@ -7,7 +7,7 @@ Description
 
 Source
 ------
-The table is derived from the Wikipedia page "History of supercomputing" (retrieved 6 Dec 2014):
+The table is derived from the Wikipedia page "History of supercomputing" (retrieved 17 Jun 2018):
 
 http://en.wikipedia.org/wiki/History_of_supercomputing
 
