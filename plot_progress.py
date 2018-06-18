@@ -228,7 +228,7 @@ class SpacePhotometryData(DataSet):
     xcolumn = "year"
     xlabel = "Launch"
     ycolumn = "pixels_per_second"
-    ylabel = "Telemetered pixels"
+    ylabel = "Pixels/s"
     labelcolumn = "name"
     xlim = [2006, 2029]
 
@@ -239,7 +239,7 @@ class IAUMembers(DataSet):
     xcolumn = "year"
     xlabel = "Year"
     ycolumn = "iau_members"
-    ylabel = "Members"
+    ylabel = "Number of IAU Members"
 
 
 class CranialCapacityData(DataSet):
@@ -283,11 +283,11 @@ if __name__ == '__main__':
                 IAUMembers(),
                 TransistorCountData(),
                 CranialCapacityData()]
-    datasets = [CranialCapacityData()]
     for ds in datasets:
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,
                                            ds.prefix+'.'+extension)
             log.info("Writing {}".format(output_filename))
             ds.plot(title=True).savefig(output_filename, dpi=200)
+            print("{} {}".format(ds.title, ds.get_doubling_text()))
         #print(ds.get_prediction())
