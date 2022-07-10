@@ -1,0 +1,3 @@
+# Number of publications on cryptography at IACR conferences
+
+The numbers in the csv file are taken from [CryptoDB](https://www.iacr.org/cryptodb/), specifically from the [breakdown by year and venue](https://www.iacr.org/cryptodb/data/byyear.php) of the number of IACR publications. CryptoDB is a publication database curated by the International Association for Cryptologic Research (IACR). It contains publications and invited talks for IACR conferences including Crypto, Eurocrypt, Asiacrypt, CHES, PKC, TCC, FSE, and the Journal of Cryptology.
