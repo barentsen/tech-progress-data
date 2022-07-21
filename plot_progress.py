@@ -280,6 +280,17 @@ class CryptographyPublicationsData(DataSet):
     ylabel = "Number of publications"
     xlim = [1979, 2023]
 
+
+class LinuxKernelData(DataSet):
+    title = "Linux kernel size in lines of code"
+    prefix = "linux-kernel-size"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "loc"
+    ylabel = "Lines of code"
+    xlim = [1992, 2022]
+
+
 if __name__ == '__main__':
     """Create graphs for all datasets in the repository."""
     DESTINATION_DIR = 'graphs'
@@ -293,7 +304,8 @@ if __name__ == '__main__':
                 IAUMembers(),
                 TransistorCountData(),
                 CranialCapacityData(),
-                CryptographyPublicationsData()]
+                CryptographyPublicationsData(),
+                LinuxKernelData()]
     for ds in datasets:
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,

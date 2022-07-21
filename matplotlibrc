@@ -44,7 +44,7 @@ ytick.direction      : in     # direction: in or out
 
 legend.fancybox      : True 
 figure.figsize   : 8.485, 6 
-figure.facecolor : 0.85
+#figure.facecolor : 0.85
 figure.edgecolor : 0.50
 
 figure.subplot.left    : 0.12  # the left side of the subplots of the figure
