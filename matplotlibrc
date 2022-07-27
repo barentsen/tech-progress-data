@@ -24,7 +24,7 @@ axes.labelcolor     : 2c3e50
 axes.axisbelow      : True   # whether axis gridlines and ticks are below
 
 axes.unicode_minus  : True
-axes.color_cycle    : E41A1C, 377EB8, 4DAF4A, 984EA3, FF7F00
+axes.prop_cycle    : cycler('color', ['e41a1c', '377eb8', '4daf4a', '984ea3', 'ff7f00'])
 
 xtick.major.size     : 10      # major tick size in points
 xtick.minor.size     : 5      # minor tick size in points
@@ -44,7 +44,7 @@ ytick.direction      : in     # direction: in or out
 
 legend.fancybox      : True 
 figure.figsize   : 8.485, 6 
-figure.facecolor : 0.85
+#figure.facecolor : 0.85
 figure.edgecolor : 0.50
 
 figure.subplot.left    : 0.12  # the left side of the subplots of the figure

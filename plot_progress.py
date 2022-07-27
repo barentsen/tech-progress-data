@@ -270,6 +270,27 @@ class CranialCapacityData(DataSet):
         log.info("{0} increases by {1:.2f} percent each year".format(self.prefix, annual_fractional_increase))
         return annual_fractional_increase
 
+
+class CryptographyPublicationsData(DataSet):
+    title = "Publications on cryptography at IACR conferences"
+    prefix = "iacr-cryptography-publications"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "num_publications"
+    ylabel = "Number of publications"
+    xlim = [1979, 2023]
+
+
+class LinuxKernelData(DataSet):
+    title = "Linux kernel size in lines of code"
+    prefix = "linux-kernel-size"
+    xcolumn = "year"
+    xlabel = "Year"
+    ycolumn = "loc"
+    ylabel = "Lines of code"
+    xlim = [1992, 2022]
+
+
 if __name__ == '__main__':
     """Create graphs for all datasets in the repository."""
     DESTINATION_DIR = 'graphs'
@@ -282,7 +303,9 @@ if __name__ == '__main__':
                 SpacePhotometryData(),
                 IAUMembers(),
                 TransistorCountData(),
-                CranialCapacityData()]
+                CranialCapacityData(),
+                CryptographyPublicationsData(),
+                LinuxKernelData()]
     for ds in datasets:
         for extension in ['png', 'pdf']:
             output_filename = os.path.join(DESTINATION_DIR,
